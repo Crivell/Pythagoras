@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="nameOfButtonToNavigateSimpleOperation">Sumple</string>
+    <string name="nameOfButtonToNavigateAdvanceOperation">Advance</string>
+    <string name="nameOfButtonToNavigateAbout">About</string>
+    <string name="nameOfButtonToExitApplication">Exit</string>
+</resources>

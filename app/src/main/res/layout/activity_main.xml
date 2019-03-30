@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <Button
+            android:id="@+id/simple"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightOfButton"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:text="@string/nameOfButtonToNavigateSimpleOperation"
+            android:gravity="center"/>
+    <Button
+            android:id="@+id/advance"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            app:layout_constraintTop_toBottomOf="@id/simple"
+
+            android:text="@string/nameOfButtonToNavigateAdvanceOperation"
+            android:gravity="center"/>
+
+    <Button
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            app:layout_constraintTop_toBottomOf="@id/advance"
+
+
+            android:text="@string/nameOfButtonToNavigateAbout"
+            android:gravity="center" tools:layout_editor_absoluteX="0dp"/>
+
+    <Button
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            app:layout_constraintTop_toBottomOf="@id/about"
+
+            android:text="@string/nameOfButtonToExitApplication"
+            android:gravity="center" tools:layout_editor_absoluteX="0dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
