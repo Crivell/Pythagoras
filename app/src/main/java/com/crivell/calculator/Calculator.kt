@@ -1,10 +1,12 @@
 package com.crivell.calculator
 
+import android.arch.lifecycle.ViewModel
+
 enum class CalculatorOperation{
     SUM, SUB, MUL, DIV
 }
 
-class Calculator {
+class Calculator :  ViewModel(){
 
 
     var a:Double = 0.0

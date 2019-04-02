@@ -10,7 +10,7 @@
     <Button
             android:id="@+id/simple"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/heightOfButton"
+            android:layout_height="@dimen/height"
             app:layout_constraintTop_toTopOf="parent"
 
             android:text="@string/nameOfButtonToNavigateSimpleOperation"
