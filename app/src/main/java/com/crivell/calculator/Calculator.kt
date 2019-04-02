@@ -2,16 +2,27 @@ package com.crivell.calculator
 
 import android.arch.lifecycle.ViewModel
 
-enum class CalculatorOperation{
+enum class CalculatorOperation {
     SUM, SUB, MUL, DIV
 }
 
-class Calculator :  ViewModel(){
+class Calculator() : ViewModel() {
 
 
-    var a:Double = 0.0
-    var b:Double = 0.0
-    var lastUseOperation : CalculatorOperation = CalculatorOperation.SUM
+
+
+    var a : Double
+    var b : Double
+    var lastUseOperation : CalculatorOperation
+    var isFirst : Boolean
+
+    init {
+        this.a = 0.0
+        this.b = 0.0
+        this.lastUseOperation = CalculatorOperation.SUM
+        this.isFirst = true
+    }
+
 
     fun sum(a:Double,b:Double):Double{
         lastUseOperation = CalculatorOperation.SUM
@@ -32,4 +43,7 @@ class Calculator :  ViewModel(){
         lastUseOperation = CalculatorOperation.DIV
         return a/b
     }
+
+
+
 }

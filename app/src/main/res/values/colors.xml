@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+    <!--Black tema colors -->
+
+    <color name="main">#500607</color>
+    <color name="buttons">#391107</color>
+    <color name="bron">#4D2C18</color>
+    <color name="we">#390728</color>
+    <color name="purple">#450E50</color>
+
 </resources>
