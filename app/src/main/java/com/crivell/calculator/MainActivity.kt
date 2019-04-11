@@ -2,6 +2,7 @@
 
 package com.crivell.calculator
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,29 +11,53 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val calculator : Calculator = Calculator()
-    lateinit var one : Button
-    lateinit var two : Button
+    lateinit var simpleButton : Button
+    lateinit var advanceButton : Button
+    lateinit var aboutButton : Button
+    lateinit var exitButton : Button
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        one = advance
-        one.setOnClickListener {
-            clickOneButton()
+
+        simpleButton = simple
+        simpleButton.setOnClickListener {
+            clickSimpleButton()
         }
-        two = about
-        two.setOnClickListener {
-            clickTwoButton()
+
+        advanceButton = advance
+        advanceButton.setOnClickListener {
+            clickAdvanceButton()
+        }
+
+        aboutButton = about
+        aboutButton.setOnClickListener {
+            clickAboutButton()
+        }
+
+        exitButton = exit
+        exitButton.setOnClickListener {
+            clickExitButton()
         }
     }
 
-    fun clickOneButton(){
-        calculator.a = (calculator.a * 10) + 1
-        text.setText(calculator.a.toLong().toString())
+    fun clickSimpleButton(){
+        val intent = Intent(this,SimpleActivity::class.java)
+        startActivity(intent)
     }
 
-    fun clickTwoButton(){
-        calculator.a = (calculator.a * 10) + 2
-        text.setText(calculator.a.toLong().toString())
+    fun clickAdvanceButton(){
+        val intent = Intent(this,AdvanceActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun clickAboutButton(){
+        val intent = Intent(this,AboutActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun clickExitButton(){
+        finish()
     }
 
 }
