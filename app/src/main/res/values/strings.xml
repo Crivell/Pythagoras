@@ -4,5 +4,9 @@
     <string name="nameOfButtonToNavigateAdvanceOperation">Advance</string>
     <string name="nameOfButtonToNavigateAbout">About</string>
     <string name="nameOfButtonToExitApplication">Exit</string>
-    <string name="NameOfApplication">Calculator</string>
+    <string name="nameOfApplication">Calculator</string>
+    <string name="authorName">Mikołaj Baran 209267</string>
+    <string name="author">Autor:</string>
+    <string name="descryption">Opis:</string>
+    <string name="descrytptionText">Prosty kalkulator na platforme android</string>
 </resources>

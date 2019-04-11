@@ -5,6 +5,62 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AboutActivity">
+        tools:context=".AboutActivity"
+        android:background="@color/purple">
+
+    <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize"/>
+
+    <android.support.v7.widget.AppCompatTextView
+            android:paddingTop="@dimen/paddingTop"
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/appName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/author"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize"/>
+    <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/author"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/authorName"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize"/>
+
+    <android.support.v7.widget.AppCompatTextView
+            android:paddingTop="@dimen/paddingTop"
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/descryption"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize"/>
+
+    <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textAlignment="center"
+            android:text="@string/descrytptionText"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -19,7 +19,7 @@
             android:background="@color/bron"
             android:textColor="@color/white"
             android:textSize="40dp"
-            android:text="@string/NameOfApplication"/>
+            android:text="@string/nameOfApplication"/>
 
     <Button
             android:id="@+id/simple"
