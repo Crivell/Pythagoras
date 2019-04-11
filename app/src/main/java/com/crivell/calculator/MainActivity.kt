@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val calculator : Calculator = Calculator()
     lateinit var simpleButton : Button
     lateinit var advanceButton : Button
     lateinit var aboutButton : Button
