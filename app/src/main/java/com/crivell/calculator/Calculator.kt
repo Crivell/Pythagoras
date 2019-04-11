@@ -2,21 +2,25 @@ package com.crivell.calculator
 
 import android.arch.lifecycle.ViewModel
 
-enum class CalculatorOperation {
-    SUM, SUB, MUL, DIV
+enum class CalculatorOperation(val value:String) {
+    SUM("sum"),
+    SUB("sub"),
+    MUL("mul"),
+    DIV("div")
 }
 
 class Calculator() : ViewModel() {
 
 
 
-
+    var display : String
     var a : Double
     var b : Double
     var lastUseOperation : CalculatorOperation
     var isFirst : Boolean
 
     init {
+        this.display = ""
         this.a = 0.0
         this.b = 0.0
         this.lastUseOperation = CalculatorOperation.SUM
