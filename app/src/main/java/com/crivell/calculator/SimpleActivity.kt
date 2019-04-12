@@ -10,7 +10,12 @@ class SimpleActivity : AppCompatActivity() {
 
     val calculator : Calculator = Calculator()
     lateinit var bkspButton: Button
-
+    lateinit var clearButton:Button
+    lateinit var plusMinusButton:Button
+    lateinit var divideButton : Button
+    lateinit var nineButton:Button
+    lateinit var dotButton:Button
+    lateinit var equalButton:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +24,56 @@ class SimpleActivity : AppCompatActivity() {
         bkspButton.setOnClickListener {
             bkspButtonClick()
         }
+
+        clearButton = clear
+        clearButton.setOnClickListener {
+            clearButtonClick()
+        }
+
+        plusMinusButton = plusMinus
+        plusMinusButton.setOnClickListener {
+            plusMinusButtonClick()
+        }
+
+        divideButton = divide
+        divideButton.setOnClickListener {
+            calculator.div()
+            text.setText(calculator.display)
+        }
+
+        nineButton = nine
+        nineButton.setOnClickListener {
+            calculator.updateValue(9.0)
+            text.setText(calculator.display)
+        }
+
+        dotButton = dot
+        dotButton.setOnClickListener {
+            calculator.addDot()
+            text.setText(calculator.display)
+        }
+
+        equalButton = equal
+        equalButton.setOnClickListener {
+            calculator.equal()
+            text.setText(calculator.display)
+        }
+    }
+
+    fun plusMinusButtonClick(){
+        calculator.plusMinut()
+        text.setText(calculator.display)
     }
 
     fun bkspButtonClick(){
         calculator.display = "sdasdasd"
         text.setText(calculator.display)
+    }
+
+    fun clearButtonClick(){
+        calculator.display = ""
+        text.setText(calculator.display)
+        calculator.clear()
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
