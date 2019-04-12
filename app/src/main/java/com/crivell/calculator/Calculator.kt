@@ -22,6 +22,7 @@ class Calculator() : ViewModel() {
     var isDot:Boolean
     var isAfterEqual:Boolean
     var isAfter :Boolean
+    var isFirstMinus:Boolean
 
     init {
         this.display = ""
@@ -32,18 +33,19 @@ class Calculator() : ViewModel() {
         this.isDot = false
         this.isAfterEqual = false
         this.isAfter = false
+        this.isFirstMinus = false
     }
 
 
     fun sum():Double{
         lastUseOperation = CalculatorOperation.SUM
+        if(!isFirst){
+            a+=b
+        }
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
-        }
-        if(!isFirst){
-            a+=b
         }
         addingSecoundDigitInit()
         return a
@@ -51,14 +53,16 @@ class Calculator() : ViewModel() {
 
     fun sub():Double{
         lastUseOperation = CalculatorOperation.SUB
+
+        if(!isFirst){
+            a-=b
+        }else{
+            isFirstMinus = true
+        }
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
-        }
-        if(!isFirst){
-            a-=b
-
         }
         addingSecoundDigitInit()
         return a
@@ -66,15 +70,15 @@ class Calculator() : ViewModel() {
 
     fun mul():Double{
         lastUseOperation = CalculatorOperation.MUL
+        if(!isFirst){
+            a*=b
+        }
+
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
         }
-        if(!isFirst){
-            a*=b
-        }
-
         addingSecoundDigitInit()
 
         return a
@@ -82,15 +86,15 @@ class Calculator() : ViewModel() {
 
     fun div():Double{
         lastUseOperation = CalculatorOperation.DIV
+        if(!isFirst){
+            a/=b
+        }
+
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
         }
-        if(!isFirst){
-            a/=b
-        }
-
         addingSecoundDigitInit()
 
         return a
@@ -140,10 +144,16 @@ class Calculator() : ViewModel() {
             isAfterEqual = false
             this.display = ""
         }
-        if(isAfter){
-            this.display = ""
+
+        if(isAfter ){
+            display = ""
+            isAfter = false
         }
+
+
         this.display += x.toInt().toString()
+
+
         if(isFirst){
             a = this.display.toDouble()
         }else{
@@ -178,6 +188,9 @@ class Calculator() : ViewModel() {
         }
     }
     fun bksp(){
+        if(display.length >=1){
+            a = display.toDouble()
+        }
         display = display.dropLast(1)
     }
 }
