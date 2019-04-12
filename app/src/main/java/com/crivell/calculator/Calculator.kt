@@ -37,13 +37,13 @@ class Calculator() : ViewModel() {
 
     fun sum():Double{
         lastUseOperation = CalculatorOperation.SUM
-        if(!isFirst){
-            a+=b
-        }
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
+        }
+        if(!isFirst){
+            a+=b
         }
         addingSecoundDigitInit()
         return a
@@ -51,14 +51,14 @@ class Calculator() : ViewModel() {
 
     fun sub():Double{
         lastUseOperation = CalculatorOperation.SUB
-        if(!isFirst){
-            a-=b
-
-        }
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
+        }
+        if(!isFirst){
+            a-=b
+
         }
         addingSecoundDigitInit()
         return a
@@ -66,15 +66,15 @@ class Calculator() : ViewModel() {
 
     fun mul():Double{
         lastUseOperation = CalculatorOperation.MUL
-        if(!isFirst){
-            a*=b
-        }
-
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
         }
+        if(!isFirst){
+            a*=b
+        }
+
         addingSecoundDigitInit()
 
         return a
@@ -82,15 +82,15 @@ class Calculator() : ViewModel() {
 
     fun div():Double{
         lastUseOperation = CalculatorOperation.DIV
-        if(!isFirst){
-            a/=b
-        }
-
         if(!hasDecimalPiont(a)){
             display = a.toString()
         }else{
             display = a.toInt().toString()
         }
+        if(!isFirst){
+            a/=b
+        }
+
         addingSecoundDigitInit()
 
         return a
