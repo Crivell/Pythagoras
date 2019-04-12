@@ -21,7 +21,7 @@ class Calculator() : ViewModel() {
     var isFirst : Boolean
     var isDot:Boolean
     var isAfterEqual:Boolean
-
+    var isAfter :Boolean
 
     init {
         this.display = ""
@@ -31,6 +31,7 @@ class Calculator() : ViewModel() {
         this.isFirst = true
         this.isDot = false
         this.isAfterEqual = false
+        this.isAfter = false
     }
 
 
@@ -38,6 +39,11 @@ class Calculator() : ViewModel() {
         lastUseOperation = CalculatorOperation.SUM
         if(!isFirst){
             a+=b
+        }
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
         }
         addingSecoundDigitInit()
         return a
@@ -49,6 +55,11 @@ class Calculator() : ViewModel() {
             a-=b
 
         }
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
+        }
         addingSecoundDigitInit()
         return a
     }
@@ -59,6 +70,11 @@ class Calculator() : ViewModel() {
             a*=b
         }
 
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
+        }
         addingSecoundDigitInit()
 
         return a
@@ -70,6 +86,11 @@ class Calculator() : ViewModel() {
             a/=b
         }
 
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
+        }
         addingSecoundDigitInit()
 
         return a
@@ -119,7 +140,9 @@ class Calculator() : ViewModel() {
             isAfterEqual = false
             this.display = ""
         }
-
+        if(isAfter){
+            this.display = ""
+        }
         this.display += x.toInt().toString()
         if(isFirst){
             a = this.display.toDouble()
@@ -138,7 +161,12 @@ class Calculator() : ViewModel() {
 
     fun addingSecoundDigitInit(){
         isFirst = false
-        display = ""
+        this.isAfter = true
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
+        }
         isDot = false
     }
 
