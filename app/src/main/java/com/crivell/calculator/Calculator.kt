@@ -1,6 +1,7 @@
 package com.crivell.calculator
 
 import android.arch.lifecycle.ViewModel
+import kotlin.math.absoluteValue
 
 enum class CalculatorOperation(val value:String) {
     SUM("sum"),
@@ -35,22 +36,31 @@ class Calculator() : ViewModel() {
 
     fun sum():Double{
         lastUseOperation = CalculatorOperation.SUM
-        a+=b
-        display = a.toString()
+        if(!isFirst){
+            a+=b
+        }
+        addingSecoundDigitInit()
         return a
     }
 
     fun sub():Double{
         lastUseOperation = CalculatorOperation.SUB
-        a-=b
-        display = a.toString()
+        if(!isFirst){
+            a-=b
+
+        }
+        addingSecoundDigitInit()
         return a
     }
 
     fun mul():Double{
         lastUseOperation = CalculatorOperation.MUL
-        a*=b
-        display = a.toString()
+        if(!isFirst){
+            a*=b
+        }
+
+        addingSecoundDigitInit()
+
         return a
     }
 
@@ -59,8 +69,9 @@ class Calculator() : ViewModel() {
         if(!isFirst){
             a/=b
         }
-        isFirst = false
-        display = ""
+
+        addingSecoundDigitInit()
+
         return a
     }
 
@@ -73,7 +84,11 @@ class Calculator() : ViewModel() {
             CalculatorOperation.MUL -> mul()
             CalculatorOperation.DIV -> div()
         }
-        display = a.toString()
+        if(!hasDecimalPiont(a)){
+            display = a.toString()
+        }else{
+            display = a.toInt().toString()
+        }
         isAfterEqual = true
     }
 
@@ -81,13 +96,19 @@ class Calculator() : ViewModel() {
         this.a = 0.0
         this.b = 0.0
         this.isFirst = true
+        isDot = false
         lastUseOperation = CalculatorOperation.SUM
     }
 
     fun plusMinut(){
         if(!a.equals(0.0)){
             a*=(-1)
-            this.display = a.toString()
+
+            if(!hasDecimalPiont(a)){
+                display = a.toString()
+            }else{
+                display = a.toInt().toString()
+            }
         }
     }
 
@@ -98,17 +119,37 @@ class Calculator() : ViewModel() {
             isAfterEqual = false
             this.display = ""
         }
+
         this.display += x.toInt().toString()
         if(isFirst){
             a = this.display.toDouble()
         }else{
-            b=this.display.toDouble()
+            b = this.display.toDouble()
         }
+
     }
 
     fun addDot(){
         if(!isDot){
+            isDot=true
             display+="."
         }
+    }
+
+    fun addingSecoundDigitInit(){
+        isFirst = false
+        display = ""
+        isDot = false
+    }
+
+    fun hasDecimalPiont(x:Double):Boolean{
+        if(x - x.toInt().toDouble() == 0.0){
+            return true
+        }else{
+            return false
+        }
+    }
+    fun bksp(){
+        display = display.dropLast(1)
     }
 }
