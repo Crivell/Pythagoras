@@ -1,5 +1,6 @@
 package com.crivell.calculator
 
+import RPN.ReversePolishNotation
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -142,6 +143,7 @@ class SimpleActivity : AppCompatActivity() {
             calculator.updateValue(0.0)
             text.setText(calculator.display)
         }
+        text.setText(ReversePolishNotation.solveEq("10 + 2 * 10 / 2 + ( 2 + 1 ) "))
     }
 
     fun plusMinusButtonClick(){
