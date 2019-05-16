@@ -36,61 +36,61 @@ class SimpleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple)
-        bkspButton = bksp
-        bkspButton.setOnClickListener {
-            bkspButtonClick()
-        }
-
-        clearButton = clear
-        clearButton.setOnClickListener {
-            clearButtonClick()
-        }
-
-        plusMinusButton = plusMinus
-        plusMinusButton.setOnClickListener {
-            plusMinusButtonClick()
-        }
-
-        divideButton = divide
-        divideButton.setOnClickListener {
-            calculator.div()
-            text.setText(calculator.display)
-        }
-
-        mulButton = mul
-        mulButton.setOnClickListener {
-            calculator.mul()
-            text.setText(calculator.display)
-        }
-
-        subButton = sub
-        subButton.setOnClickListener {
-            calculator.sub()
-            text.setText(calculator.display)
-        }
-
-        sumButton = sum
-        sumButton.setOnClickListener {
-            calculator.sum()
-            text.setText(calculator.display)
-        }
+//        bkspButton = bksp
+//        bkspButton.setOnClickListener {
+//            bkspButtonClick()
+//        }
+//
+//        clearButton = clear
+//        clearButton.setOnClickListener {
+//            clearButtonClick()
+//        }
+//
+//        plusMinusButton = plusMinus
+//        plusMinusButton.setOnClickListener {
+//            plusMinusButtonClick()
+//        }
+//
+//        divideButton = divide
+//        divideButton.setOnClickListener {
+//            calculator.div()
+//            text.setText(calculator.display)
+//        }
+//
+//        mulButton = mul
+//        mulButton.setOnClickListener {
+//            calculator.mul()
+//            text.setText(calculator.display)
+//        }
+//
+//        subButton = sub
+//        subButton.setOnClickListener {
+//            calculator.sub()
+//            text.setText(calculator.display)
+//        }
+//
+//        sumButton = sum
+//        sumButton.setOnClickListener {
+//            calculator.sum()
+//            text.setText(calculator.display)
+//        }
         nineButton = nine
         nineButton.setOnClickListener {
             calculator.updateValue(9.0)
             text.setText(calculator.display)
         }
 
-        dotButton = dot
-        dotButton.setOnClickListener {
-            calculator.addDot()
-            text.setText(calculator.display)
-        }
-
-        equalButton = equal
-        equalButton.setOnClickListener {
-            calculator.equal()
-            text.setText(calculator.display)
-        }
+//        dotButton = dot
+//        dotButton.setOnClickListener {
+//            calculator.addDot()
+//            text.setText(calculator.display)
+//        }
+//
+//        equalButton = equal
+//        equalButton.setOnClickListener {
+//            calculator.equal()
+//            text.setText(calculator.display)
+//        }
 
         eightButton = eight
         eightButton.setOnClickListener {
