@@ -80,11 +80,11 @@ class SimpleActivity : AppCompatActivity() {
             text.setText(calculator.display)
         }
 
-//        dotButton = dot
-//        dotButton.setOnClickListener {
-//            calculator.addDot()
-//            text.setText(calculator.display)
-//        }
+        dotButton = dot
+        dotButton.setOnClickListener {
+            calculator.addDot()
+            text.setText(calculator.display)
+        }
 //
 //        equalButton = equal
 //        equalButton.setOnClickListener {
