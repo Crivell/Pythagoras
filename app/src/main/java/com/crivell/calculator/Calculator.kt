@@ -1,7 +1,6 @@
 package com.crivell.calculator
 
 import android.arch.lifecycle.ViewModel
-import kotlin.math.absoluteValue
 
 enum class CalculatorOperation(val value:String) {
     SUM("sum"),
@@ -15,6 +14,7 @@ class Calculator() : ViewModel() {
 
 
     var display : String
+    var result : String
     var a : Double
     var b : Double
     var lastUseOperation : CalculatorOperation
@@ -26,6 +26,7 @@ class Calculator() : ViewModel() {
 
     init {
         this.display = ""
+        this.result = ""
         this.a = 0.0
         this.b = 0.0
         this.lastUseOperation = CalculatorOperation.SUM

@@ -29,6 +29,7 @@
     <string name="dot">.</string>
     <string name="equal">=</string>
     <string name="plus">+</string>
+    <string name="persent">%</string>
 
 
 </resources>

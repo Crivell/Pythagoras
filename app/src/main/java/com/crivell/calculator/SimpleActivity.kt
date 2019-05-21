@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_simple.*
-import java.time.format.TextStyle
 
 class SimpleActivity : AppCompatActivity() {
 
     val calculator : Calculator = Calculator()
+    val calculatorVM:CalculatorVM = CalculatorVM()
     lateinit var bkspButton: Button
     lateinit var clearButton:Button
     lateinit var plusMinusButton:Button
@@ -36,114 +36,114 @@ class SimpleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple)
-//        bkspButton = bksp
-//        bkspButton.setOnClickListener {
-//            bkspButtonClick()
-//        }
-//
-//        clearButton = clear
-//        clearButton.setOnClickListener {
-//            clearButtonClick()
-//        }
-//
-//        plusMinusButton = plusMinus
-//        plusMinusButton.setOnClickListener {
-//            plusMinusButtonClick()
-//        }
-//
-//        divideButton = divide
-//        divideButton.setOnClickListener {
-//            calculator.div()
-//            text.setText(calculator.display)
-//        }
-//
-//        mulButton = mul
-//        mulButton.setOnClickListener {
-//            calculator.mul()
-//            text.setText(calculator.display)
-//        }
-//
-//        subButton = sub
-//        subButton.setOnClickListener {
-//            calculator.sub()
-//            text.setText(calculator.display)
-//        }
-//
-//        sumButton = sum
-//        sumButton.setOnClickListener {
-//            calculator.sum()
-//            text.setText(calculator.display)
-//        }
+        bkspButton = bksp
+        bkspButton.setOnClickListener {
+            bkspButtonClick()
+        }
+
+        clearButton = clear
+        clearButton.setOnClickListener {
+            clearButtonClick()
+        }
+
+        plusMinusButton = plusMinus
+        plusMinusButton.setOnClickListener {
+            plusMinusButtonClick()
+        }
+
+        divideButton = divide
+        divideButton.setOnClickListener {
+            calculatorVM.div()
+            text.setText(calculatorVM.display)
+        }
+
+        mulButton = mul
+        mulButton.setOnClickListener {
+            calculatorVM.mul()
+            text.setText(calculatorVM.display)
+        }
+
+        subButton = sub
+        subButton.setOnClickListener {
+            calculatorVM.sub()
+            text.setText(calculatorVM.display)
+        }
+
+        sumButton = sum
+        sumButton.setOnClickListener {
+            calculatorVM.sum()
+            text.setText(calculatorVM.display)
+        }
         nineButton = nine
         nineButton.setOnClickListener {
-            calculator.updateValue(9.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(9.0)
+            text.setText(calculatorVM.display)
         }
 
         dotButton = dot
         dotButton.setOnClickListener {
-            calculator.addDot()
-            text.setText(calculator.display)
+            calculatorVM.addDot()
+            text.setText(calculatorVM.display)
         }
-//
-//        equalButton = equal
-//        equalButton.setOnClickListener {
-//            calculator.equal()
-//            text.setText(calculator.display)
-//        }
+
+        equalButton = equal
+        equalButton.setOnClickListener {
+            calculatorVM.equal()
+            resoult.setText(calculatorVM.result)
+        }
 
         eightButton = eight
         eightButton.setOnClickListener {
-            calculator.updateValue(8.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(8.0)
+            text.setText(calculatorVM.display)
         }
 
         sevenButton = seven
         sevenButton.setOnClickListener {
-            calculator.updateValue(7.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(7.0)
+            text.setText(calculatorVM.display)
         }
         sixButton = six
         sixButton.setOnClickListener {
-            calculator.updateValue(6.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(6.0)
+            text.setText(calculatorVM.display)
         }
         fiveButton = five
         fiveButton.setOnClickListener {
-            calculator.updateValue(5.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(5.0)
+            text.setText(calculatorVM.display)
         }
 
         fournButton = four
         fournButton.setOnClickListener {
-            calculator.updateValue(4.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(4.0)
+            text.setText(calculatorVM.display)
         }
 
         threeButton = three
         threeButton.setOnClickListener {
-            calculator.updateValue(3.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(3.0)
+            text.setText(calculatorVM.display)
         }
 
         twoButton = two
         twoButton.setOnClickListener {
-            calculator.updateValue(2.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(2.0)
+            text.setText(calculatorVM.display)
         }
 
         oneButton = one
         oneButton.setOnClickListener {
-            calculator.updateValue(1.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(1.0)
+            text.setText(calculatorVM.display)
         }
 
         zeroButton = zero
         zeroButton.setOnClickListener {
-            calculator.updateValue(0.0)
-            text.setText(calculator.display)
+            calculatorVM.addingNumber(0.0)
+            text.setText(calculatorVM.display)
         }
-        text.setText(ReversePolishNotation.solveEq("10 + 2 * 10 / 2 + ( 2 + 1 ) "))
+
     }
 
     fun plusMinusButtonClick(){
@@ -152,14 +152,15 @@ class SimpleActivity : AppCompatActivity() {
     }
 
     fun bkspButtonClick(){
-        calculator.bksp()
-        text.setText(calculator.display)
+        calculatorVM.bksp()
+        text.setText(calculatorVM.display)
     }
 
     fun clearButtonClick(){
-        calculator.display = ""
-        text.setText(calculator.display)
-        calculator.clear()
+
+        calculatorVM.clear()
+        text.setText(calculatorVM.display)
+        resoult.setText(calculatorVM.result)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
