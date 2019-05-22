@@ -1,6 +1,6 @@
 package com.crivell.calculator
 
-import RPN.ReversePolishNotation
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.activity_simple.*
 
 class SimpleActivity : AppCompatActivity() {
 
-    val calculator : Calculator = Calculator()
     val calculatorVM:CalculatorVM = CalculatorVM()
     lateinit var bkspButton: Button
     lateinit var clearButton:Button
@@ -30,6 +29,16 @@ class SimpleActivity : AppCompatActivity() {
     lateinit var twoButton:Button
     lateinit var oneButton:Button
     lateinit var zeroButton:Button
+    lateinit var leftButton:Button
+    lateinit var rightButton:Button
+    lateinit var sinButton:Button
+    lateinit var cosButton:Button
+    lateinit var tanButton:Button
+    lateinit var logButton:Button
+    lateinit var lnButton:Button
+    lateinit var powNButton:Button
+    lateinit var pow2Button:Button
+    lateinit var perButton:Button
 
 
 
@@ -144,11 +153,81 @@ class SimpleActivity : AppCompatActivity() {
             text.setText(calculatorVM.display)
         }
 
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+            /*
+            lateinit var leftButton:Button
+            lateinit var rightButton:Button
+            lateinit var sinButton:Button
+            lateinit var cosButton:Button
+            lateinit var tanButton:Button
+            lateinit var logButton:Button
+            lateinit var lnButton:Button
+            lateinit var powNButton:Button
+            lateinit var pow2Button:Button
+            lateinit var perButton:Button
+             */
+
+            leftButton = left
+            leftButton.setOnClickListener {
+                calculatorVM.left()
+                text.setText(calculatorVM.display)
+            }
+            rightButton = right
+            rightButton.setOnClickListener {
+                calculatorVM.right()
+                text.setText(calculatorVM.display)
+            }
+            sinButton = sin
+            sinButton.setOnClickListener {
+                calculatorVM.sin()
+                text.setText(calculatorVM.display)
+            }
+            cosButton = cos
+            cosButton.setOnClickListener {
+                calculatorVM.cos()
+                text.setText(calculatorVM.display)
+            }
+            tanButton = tan
+            tanButton.setOnClickListener {
+                calculatorVM.tan()
+                text.setText(calculatorVM.display)
+            }
+            logButton = log
+            logButton.setOnClickListener {
+                calculatorVM.log()
+                text.setText(calculatorVM.display)
+            }
+            lnButton = ln
+            lnButton.setOnClickListener {
+                calculatorVM.ln()
+                text.setText(calculatorVM.display)
+            }
+            powNButton = pown
+            powNButton.setOnClickListener {
+                calculatorVM.powN()
+                text.setText(calculatorVM.display)
+            }
+            pow2Button = pow2
+            pow2Button.setOnClickListener {
+                calculatorVM.pow2()
+                text.setText(calculatorVM.display)
+            }
+            perButton = percent
+            powNButton.setOnClickListener {
+                calculatorVM.per()
+                text.setText(calculatorVM.display)
+            }
+
+
+
+        }
+
     }
 
     fun plusMinusButtonClick(){
-        calculator.plusMinut()
-        text.setText(calculator.display)
+        calculatorVM.plusMinus()
+        text.setText(calculatorVM.result)
     }
 
     fun bkspButtonClick(){
@@ -165,19 +244,24 @@ class SimpleActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putCharSequence("savedText", calculator.display)
-        outState?.putCharSequence("lastUse",calculator.lastUseOperation.toString())
-        outState?.putCharSequence("b",calculator.b.toString())
-        outState?.putCharSequence("isFirst",calculator.isFirst.toString())
+        outState?.putCharSequence("savedText", calculatorVM.display)
+        outState?.putCharSequence("result", calculatorVM.result)
+        outState?.putCharSequence("first", calculatorVM.first.toString())
+        outState?.putCharSequence("isDot", calculatorVM.isDot.toString())
+        outState?.putCharSequence("isAction", calculatorVM.isAction.toString())
+        outState?.putCharSequence("isLastDot", calculatorVM.isLastDot.toString())
 
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        calculator.display = savedInstanceState?.getCharSequence("savedText").toString()
-        text.setText(calculator.display)
-        calculator.lastUseOperation = CalculatorOperation.valueOf(savedInstanceState?.getCharSequence("lastUse").toString())
-        calculator.b = savedInstanceState?.getCharSequence("b").toString().toDouble()
-        calculator.isFirst = savedInstanceState?.getCharSequence("isFirst").toString().toBoolean()
+        calculatorVM.display = savedInstanceState?.getCharSequence("savedText").toString()
+        text.setText(calculatorVM.display)
+        calculatorVM.result= savedInstanceState?.getCharSequence("result").toString()
+        resoult.setText(calculatorVM.result)
+        calculatorVM.first= savedInstanceState?.getCharSequence("first").toString().toBoolean()
+        calculatorVM.isDot= savedInstanceState?.getCharSequence("isDot").toString().toBoolean()
+        calculatorVM.isAction= savedInstanceState?.getCharSequence("isAction").toString().toBoolean()
+        calculatorVM.isLastDot= savedInstanceState?.getCharSequence("isLastDot").toString().toBoolean()
     }
 }

@@ -2,6 +2,7 @@ package com.crivell.calculator
 
 import RPN.ReversePolishNotation
 import android.arch.lifecycle.ViewModel
+import java.lang.Exception
 
 class CalculatorVM : ViewModel() {
 
@@ -20,8 +21,16 @@ class CalculatorVM : ViewModel() {
         isLastDot = false
     }
 
+    private fun loadUsers() {
+        // Do an asynchronous operation to fetch users.
+    }
+
+    fun plusMinus(){
+       // display += " ( -1 ) "
+    }
+
     fun sum(){
-        addSimbol(" * ")
+        addSimbol(" + ")
     }
 
     fun sub(){
@@ -34,6 +43,46 @@ class CalculatorVM : ViewModel() {
 
     fun mul(){
         addSimbol(" * ")
+    }
+
+    fun left(){
+        addSimbol(" ( ")
+    }
+
+    fun right(){
+        addSimbol(" ) ")
+    }
+
+    fun sin(){
+        addSimbol(" sin ")
+    }
+
+    fun cos(){
+        addSimbol(" cos ")
+    }
+
+    fun tan(){
+        addSimbol(" tan ")
+    }
+
+    fun log(){
+        addSimbol(" log ")
+    }
+
+    fun ln(){
+        addSimbol(" ln ")
+    }
+
+    fun powN(){
+        addSimbol(" ^ ")
+    }
+
+    fun pow2(){
+        addSimbol(" ^ 2 ")
+    }
+
+    fun per(){
+        addSimbol(" % ")
     }
 
     fun clear(){
@@ -57,8 +106,14 @@ class CalculatorVM : ViewModel() {
     }
 
     fun equal():String{
-        if(first){
-            result = ReversePolishNotation.solveEq(this.display)
+        try{
+            if(display.length > 0){
+                if(first){
+                    result = ReversePolishNotation.solveEq(this.display)
+                }
+            }
+        }catch (e : Exception){
+            result = "Niedozwolone dzialanie"
         }
         return result
     }
