@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <TableLayout
+            android:layout_width="1264dp"
+            android:layout_height="884dp" tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView5"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+            <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <Button
+                        android:text="Button"
+                        android:id="@+id/button40" android:layout_width="63dp"/>
+                <Button
+                        android:text="Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" android:id="@+id/button38"/>
+            </TableRow>
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>

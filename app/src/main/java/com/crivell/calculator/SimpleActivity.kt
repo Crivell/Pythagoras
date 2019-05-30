@@ -1,5 +1,6 @@
 package com.crivell.calculator
 
+import RPN.ReversePolishNotation
 import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,7 @@ class SimpleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple)
+
         bkspButton = bksp
         bkspButton.setOnClickListener {
             bkspButtonClick()
@@ -52,7 +54,9 @@ class SimpleActivity : AppCompatActivity() {
 
         clearButton = clear
         clearButton.setOnClickListener {
-            clearButtonClick()
+            calculatorVM.clear()
+            text.setText(calculatorVM.display)
+            resoult.setText(calculatorVM.result)
         }
 
         plusMinusButton = plusMinus
@@ -98,7 +102,7 @@ class SimpleActivity : AppCompatActivity() {
         equalButton = equal
         equalButton.setOnClickListener {
             calculatorVM.equal()
-            resoult.setText(calculatorVM.result)
+            resoult.setText(calculatorVM.getResoutl())
         }
 
         eightButton = eight
@@ -170,13 +174,13 @@ class SimpleActivity : AppCompatActivity() {
 
             leftButton = left
             leftButton.setOnClickListener {
-                calculatorVM.left()
-                text.setText(calculatorVM.display)
+//                calculatorVM.left()
+//                text.setText(calculatorVM.display)
             }
             rightButton = right
             rightButton.setOnClickListener {
-                calculatorVM.right()
-                text.setText(calculatorVM.display)
+//                calculatorVM.right()
+//                text.setText(calculatorVM.display)
             }
             sinButton = sin
             sinButton.setOnClickListener {
@@ -218,8 +222,6 @@ class SimpleActivity : AppCompatActivity() {
                 calculatorVM.per()
                 text.setText(calculatorVM.display)
             }
-
-
 
         }
 
