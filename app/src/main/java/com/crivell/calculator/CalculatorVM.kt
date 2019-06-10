@@ -6,7 +6,7 @@ import java.lang.Exception
 
 class CalculatorVM : ViewModel() {
 
-    private var isLastDigit: Boolean
+    var isLastDigit: Boolean
     var display : String
     var result : String
     var first : Boolean
@@ -74,6 +74,10 @@ class CalculatorVM : ViewModel() {
         addSimbol(" log ")
     }
 
+    fun log2(){
+        addSimbol(" sqrt ")
+    }
+
     fun ln(){
         addSimbol(" ln ")
     }
@@ -116,10 +120,14 @@ class CalculatorVM : ViewModel() {
 
     fun equal():String{
         try{
+
             if(display.length > 0){
-                if(first){
-                    result = ReversePolishNotation.solveEq(this.display.replace('.',','))
+                if (!display.last().equals(' ')){
+                    if(first){
+                        result = ReversePolishNotation.solveEq(this.display.replace('.',','))
+                    }
                 }
+
             }
         }catch (e : Exception){
             result = "Niedozwolone dzialanie"
@@ -144,9 +152,14 @@ class CalculatorVM : ViewModel() {
                 isDot = false
             }
 
+            if(display.takeLast(6).equals(" sqrt ")){
+                display = display.dropLast(5 )
+                isLastDigit = true
+            }
             var s : String = display.takeLast(5)
             if(s.equals(" log ") || s.equals(" sin ") || s.equals(" cos ") || s.equals(" tan ")){
                 display = display.dropLast(4 )
+                isLastDigit = true
             }
             s = display.takeLast(3)
             if(s.equals(" + ") || s.equals(" - ") || s.equals(" / ") || s.equals(" * ")|| s.equals(" % ") || s.equals(" ^ ") || s.equals(" ( ") || s.equals(" ) ")){
@@ -157,6 +170,9 @@ class CalculatorVM : ViewModel() {
                 display = display.dropLast(3 )
             }
 
+            if(display.last().equals(' ')){
+                isLastDigit = false
+            }
             display = display.dropLast(1 )
         }else{
             display = " "
@@ -178,32 +194,36 @@ class CalculatorVM : ViewModel() {
                 }
             }
         }else{
-            if(s.equals(" ( ")){
+            if(s.equals(" ^ 2")){
                 if(!isAction){
-                    if(isDigit){
-                        display += s
-                        isDigit = false
-                    }
+                    display += s
+                    isDigit = false
+                    isDot = false
+                    isDigit = false
+                    isLastDigit = false
                 }
-            }
-            if(!isLastDot){
-                if(s.equals(" ln ") || s.equals(" log ") || s.equals(" sin ") || s.equals(" cos ") || s.equals(" tan ")){
-                    if(!isLastDigit){
-                        display += s
-                        isLastDigit = false
+            }else{
+                if(!isLastDot){
+                    if(s.equals(" ln ") || s.equals(" log ") || s.equals(" sin ") || s.equals(" cos ") || s.equals(" tan ") || s.equals(" sqrt ")){
+                        if(!isLastDigit){
+                            display += s
+                            isLastDigit = false
+                        }
+                    }else{
+                        if(!isAction){
+                            display += s
+                            isAction = true
+                            first = false
+                            isDot = false
+                            isDigit = false
+                            isLastDigit = false
+                        }
                     }
-                }else{
-                    if(!isAction){
-                        display += s
-                        isAction = true
-                        first = false
-                        isDot = false
-                        isDigit = false
-                        isLastDigit = false
-                    }
-                }
 
+                }
             }
+
+
         }
 
     }

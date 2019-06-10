@@ -208,7 +208,7 @@
                     android:layout_height="match_parent" android:id="@+id/button30" android:layout_weight="1"
                     android:background="@android:color/transparent"/>
             <Button
-                    android:background="@android:color/holo_red_dark"
+                    android:background="@android:color/transparent"
                     android:layout_width="77dp"
                     android:layout_height="match_parent"
                     android:id="@+id/pown"
@@ -220,7 +220,7 @@
                     android:id="@+id/pow2"
             />
             <Button
-                    android:background="@color/blue"
+                    android:background="@android:color/transparent"
                     android:layout_width="76dp"
                     android:layout_height="match_parent"
                     android:id="@+id/percent"

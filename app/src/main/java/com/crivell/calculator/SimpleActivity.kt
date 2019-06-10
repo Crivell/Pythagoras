@@ -36,6 +36,7 @@ class SimpleActivity : AppCompatActivity() {
     lateinit var cosButton:Button
     lateinit var tanButton:Button
     lateinit var logButton:Button
+    lateinit var logButton2:Button
     lateinit var lnButton:Button
     lateinit var powNButton:Button
     lateinit var pow2Button:Button
@@ -46,7 +47,6 @@ class SimpleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple)
-
         bkspButton = bksp
         bkspButton.setOnClickListener {
             bkspButtonClick()
@@ -61,7 +61,7 @@ class SimpleActivity : AppCompatActivity() {
 
         plusMinusButton = plusMinus
         plusMinusButton.setOnClickListener {
-            plusMinusButtonClick()
+           // plusMinusButtonClick()
         }
 
         divideButton = divide
@@ -218,10 +218,18 @@ class SimpleActivity : AppCompatActivity() {
                 text.setText(calculatorVM.display)
             }
             perButton = percent
-            powNButton.setOnClickListener {
+            perButton.setOnClickListener {
                 calculatorVM.per()
                 text.setText(calculatorVM.display)
             }
+
+            logButton2 = log2
+            logButton2.setOnClickListener {
+                calculatorVM.log2()
+                text.setText(calculatorVM.display)
+            }
+
+
 
         }
 
@@ -247,11 +255,17 @@ class SimpleActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         outState?.putCharSequence("savedText", calculatorVM.display)
-        outState?.putCharSequence("result", calculatorVM.result)
+        outState?.putCharSequence("result", calculatorVM.result.replace(',','.'))
         outState?.putCharSequence("first", calculatorVM.first.toString())
         outState?.putCharSequence("isDot", calculatorVM.isDot.toString())
         outState?.putCharSequence("isAction", calculatorVM.isAction.toString())
         outState?.putCharSequence("isLastDot", calculatorVM.isLastDot.toString())
+        outState?.putCharSequence("isDigit",calculatorVM.isDigit.toString())
+        outState?.putCharSequence("isLastDigit",calculatorVM.isLastDigit.toString())
+        /*
+         isDigit = false
+        isLastDigit = false
+         */
 
     }
 
@@ -265,5 +279,7 @@ class SimpleActivity : AppCompatActivity() {
         calculatorVM.isDot= savedInstanceState?.getCharSequence("isDot").toString().toBoolean()
         calculatorVM.isAction= savedInstanceState?.getCharSequence("isAction").toString().toBoolean()
         calculatorVM.isLastDot= savedInstanceState?.getCharSequence("isLastDot").toString().toBoolean()
+        calculatorVM.isDigit= savedInstanceState?.getCharSequence("isDigit").toString().toBoolean()
+        calculatorVM.isLastDigit= savedInstanceState?.getCharSequence("isLastDigit").toString().toBoolean()
     }
 }
